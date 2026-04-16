@@ -29,14 +29,14 @@ const images: ImageMap = {
 
 const links = {
   buy: `https://t.me/lewiscarrot?text=${encodeURIComponent(
-    'Привет! Хочу купить курс “Визуальный интеллект”. Подскажи, как это сделать'
+    "Привет! Хочу купить курс Визуальный интеллект. Подскажи, как это сделать"
   )}`,
   ask: `https://t.me/lewiscarrot?text=${encodeURIComponent(
-    'Привет! У меня осталось несколько вопросов по курсу “Визуальный интеллект”'
+    "Привет! У меня осталось несколько вопросов по курсу Визуальный интеллект"
   )}`,
   freeDoc: "https://docs.google.com/document/d/1d-6lnlbe_-T8-eBsvF6tVDHCr__oNTx97x2_6H4qOAM/edit?usp=sharing",
   telegram: `https://t.me/lewiscarrot?text=${encodeURIComponent(
-    'Привет! У меня несколько вопросов по курсу “Визуальный интеллект”'
+    "Привет! У меня несколько вопросов по курсу Визуальный интеллект"
   )}`,
   instagram: "https://www.instagram.com/lewis_carrot",
 };
@@ -164,6 +164,26 @@ function AccentImage({
         loading={priority ? "eager" : "lazy"}
         className="h-auto w-full select-none object-contain"
       />
+    </div>
+  );
+}
+
+function InlineImageCard({
+  src,
+  alt,
+  className = "",
+  imgClassName = "",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  imgClassName?: string;
+}) {
+  return (
+    <div className={cls("my-5", className)}>
+      <div className="inline-block overflow-hidden rounded-[1.4rem] border border-black/8 bg-white p-2 shadow-[0_10px_35px_rgba(0,0,0,0.03)] sm:p-3">
+        <img src={src} alt={alt} className={cls("block h-auto w-full object-contain", imgClassName)} />
+      </div>
     </div>
   );
 }
@@ -662,13 +682,20 @@ export default function VisualIntelligenceLanding() {
         </section>
 
         <section className="px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-          <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.9fr)] lg:items-start lg:gap-20">
+          <div className="mx-auto max-w-[1440px]">
             <Reveal>
               <div className="max-w-3xl">
                 <SectionEyebrow>Предыстория</SectionEyebrow>
                 <SectionTitle>Как вообще появился этот курс</SectionTitle>
 
                 <SectionText className="mt-8 max-w-2xl">
+                  <InlineImageCard
+                    src={images.storyMain}
+                    alt="Основная иллюстрация к истории создания курса"
+                    className="mb-7"
+                    imgClassName="max-w-[380px] sm:max-w-[430px]"
+                  />
+
                   <p>Давным-давно, когда земля была покрыта льдом…</p>
                   <p>
                     А точнее — в декабре прошлого года я в очередной раз начала вести блог.
@@ -685,6 +712,14 @@ export default function VisualIntelligenceLanding() {
                   </p>
                   <p className="text-[#111111]">“Где научиться монтировать так же?”</p>
                   <p>Первому человеку, который это спросил, я ответила:</p>
+
+                  <InlineImageCard
+                    src={images.message1}
+                    alt="Скриншот первого сообщения с вопросом про курс"
+                    className="my-4"
+                    imgClassName="max-w-[520px]"
+                  />
+
                   <p className="text-[#111111]">“Когда меня лично спросят про обучение 10 человек – я сделаю курс.”</p>
                   <p>
                     С тех пор прошло несколько месяцев, и людей, которые спрашивали про обучение, стало сильно больше
@@ -694,7 +729,23 @@ export default function VisualIntelligenceLanding() {
                     Несмотря на весь этот интерес, я все равно уже собиралась дать заднюю. Потому что создавать обучение –
                     это сложно, а усложнять себе жизнь я не очень люблю. Но когда мне начали писать по второму кругу:
                   </p>
+
+                  <InlineImageCard
+                    src={images.message2}
+                    alt="Скриншот сообщения с повторным вопросом про курс"
+                    className="my-4"
+                    imgClassName="max-w-[620px]"
+                  />
+
                   <p className="text-[#111111]">“Когда уже курс?”</p>
+
+                  <InlineImageCard
+                    src={images.storyRat}
+                    alt="Иллюстрация с крысой к моменту про решение все-таки сделать курс"
+                    className="my-5"
+                    imgClassName="max-w-[320px] sm:max-w-[360px]"
+                  />
+
                   <p>
                     я поняла, что буду просто крысой, если хотя бы не попробую это сделать.
                   </p>
@@ -707,44 +758,24 @@ export default function VisualIntelligenceLanding() {
                 </SectionText>
               </div>
             </Reveal>
-
-            <Reveal>
-              <div className="relative mx-auto w-full max-w-[620px] lg:mt-10">
-                <div className="relative ml-auto w-[88%] sm:w-[82%] lg:w-[78%]">
-                  <AccentImage src={images.storyMain} alt="Основная иллюстрация к истории создания курса" className="relative z-10" />
-                </div>
-
-                <div className="relative -mt-8 mr-auto w-[58%] sm:-mt-12 sm:w-[52%] lg:-ml-8 lg:mt-10 lg:w-[48%]">
-                  <AccentImage src={images.storyRat} alt="Иллюстрация с крысой к моменту про решение все-таки сделать курс" className="relative z-20" />
-                </div>
-
-                <div className="relative mt-8 ml-auto w-[90%] rounded-[1.5rem] border border-black/8 bg-white p-3 shadow-[0_10px_35px_rgba(0,0,0,0.03)] sm:w-[78%] sm:p-4 lg:w-[72%] lg:translate-x-8">
-                  <img src={images.message1} alt="Скриншот первого сообщения с вопросом про курс" className="w-full rounded-[1rem] object-cover" />
-                </div>
-
-                <div className="relative mt-5 mr-auto w-[78%] rounded-[1.5rem] border border-black/8 bg-white p-3 shadow-[0_10px_35px_rgba(0,0,0,0.03)] sm:w-[70%] sm:p-4 lg:-translate-x-8">
-                  <img src={images.message2} alt="Скриншот сообщения с повторным вопросом про курс" className="w-full rounded-[1rem] object-cover" />
-                </div>
-              </div>
-            </Reveal>
           </div>
         </section>
 
         <section id="program" className="px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-          <div className="mx-auto grid max-w-[1440px] gap-14 lg:grid-cols-[minmax(340px,0.78fr)_minmax(0,1.08fr)] lg:items-start lg:gap-20">
-            <Reveal className="lg:order-2">
-              <div className="max-w-3xl lg:ml-auto">
+          <div className="mx-auto max-w-[1440px]">
+            <Reveal>
+              <div className="max-w-3xl">
+                <div className="mb-10">
+                  <AccentImage
+                    src={images.program}
+                    alt="Иллюстрация к программе курса"
+                    className="w-full max-w-[420px]"
+                  />
+                </div>
                 <SectionEyebrow>Программа курса</SectionEyebrow>
-                <div className="mt-10">
+                <div className="mt-10 max-w-4xl">
                   <Accordion items={programItems} defaultOpen={[0, 1]} />
                 </div>
-              </div>
-            </Reveal>
-
-            <Reveal className="lg:order-1">
-              <div className="relative mx-auto w-full max-w-[560px] lg:max-w-[520px] lg:-translate-x-6 xl:-translate-x-10">
-                <div className="absolute -left-6 top-8 h-20 w-20 rounded-full border border-black/8" />
-                <AccentImage src={images.program} alt="Иллюстрация к программе курса" className="relative z-10" />
               </div>
             </Reveal>
           </div>
