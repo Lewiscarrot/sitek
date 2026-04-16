@@ -168,7 +168,7 @@ function AccentImage({
   );
 }
 
-function InlineImageCard({
+function InlineImage({
   src,
   alt,
   className = "",
@@ -181,9 +181,7 @@ function InlineImageCard({
 }) {
   return (
     <div className={cls("my-5", className)}>
-      <div className="inline-block overflow-hidden rounded-[1.4rem] border border-black/8 bg-white p-2 shadow-[0_10px_35px_rgba(0,0,0,0.03)] sm:p-3">
-        <img src={src} alt={alt} className={cls("block h-auto w-full object-contain", imgClassName)} />
-      </div>
+      <img src={src} alt={alt} className={cls("block h-auto w-full object-contain", imgClassName)} />
     </div>
   );
 }
@@ -689,7 +687,7 @@ export default function VisualIntelligenceLanding() {
                 <SectionTitle>Как вообще появился этот курс</SectionTitle>
 
                 <SectionText className="mt-8 max-w-2xl">
-                  <InlineImageCard
+                  <InlineImage
                     src={images.storyMain}
                     alt="Основная иллюстрация к истории создания курса"
                     className="mb-7"
@@ -713,7 +711,7 @@ export default function VisualIntelligenceLanding() {
                   <p className="text-[#111111]">“Где научиться монтировать так же?”</p>
                   <p>Первому человеку, который это спросил, я ответила:</p>
 
-                  <InlineImageCard
+                  <InlineImage
                     src={images.message1}
                     alt="Скриншот первого сообщения с вопросом про курс"
                     className="my-4"
@@ -730,7 +728,7 @@ export default function VisualIntelligenceLanding() {
                     это сложно, а усложнять себе жизнь я не очень люблю. Но когда мне начали писать по второму кругу:
                   </p>
 
-                  <InlineImageCard
+                  <InlineImage
                     src={images.message2}
                     alt="Скриншот сообщения с повторным вопросом про курс"
                     className="my-4"
@@ -739,7 +737,7 @@ export default function VisualIntelligenceLanding() {
 
                   <p className="text-[#111111]">“Когда уже курс?”</p>
 
-                  <InlineImageCard
+                  <InlineImage
                     src={images.storyRat}
                     alt="Иллюстрация с крысой к моменту про решение все-таки сделать курс"
                     className="my-5"
